@@ -17,6 +17,7 @@ movie_dict = {'years': years, 'durations': durations}
 # Print the dictionary
 print(movie_dict)
 ```
+<img width="753" alt="Screen Shot 2023-04-09 at 20 42 51" src="https://user-images.githubusercontent.com/86967515/230813006-797ad7c9-d5f7-4938-9a88-aa4189c3a6e4.png">
 
 ## 2. Creating a DataFrame from a dictionary
 <p>To convert our dictionary <code>movie_dict</code> to a <code>pandas</code> DataFrame, we will first need to import the library under its usual alias. We'll also want to inspect our DataFrame to ensure it was created correctly. Let's perform these steps now.</p>
@@ -31,6 +32,7 @@ durations_df = pd.DataFrame(movie_dict)
 # Print the DataFrame
 print(durations_df)
 ```
+<img width="198" alt="Screen Shot 2023-04-09 at 20 43 24" src="https://user-images.githubusercontent.com/86967515/230813016-31f3a413-6eaf-4175-b38e-1082308c9262.png">
 
 ## 3. A visual inspection of our data
 <p>Alright, we now have a <code>pandas</code> DataFrame, the most common way to work with tabular data in Python. Now back to the task at hand. We want to follow up on our friend's assertion that movie lengths have been decreasing over time. A great place to start will be a visualization of the data.</p>
@@ -50,6 +52,7 @@ plt.title("Netflix Movie Durations 2011-2020")
 # Show the plot
 plt.show()
 ```
+<img width="566" alt="Screen Shot 2023-04-09 at 20 43 54" src="https://user-images.githubusercontent.com/86967515/230813023-461457db-71a2-4384-bbae-375c6a92aa29.png">
 
 ## 4. Loading the rest of the data from a CSV
 <p>Well, it looks like there is something to the idea that movie lengths have decreased over the past ten years! But equipped only with our friend's aggregations, we're limited in the further explorations we can perform. There are a few questions about this trend that we are currently unable to answer, including:</p>
@@ -66,6 +69,7 @@ netflix_df = pd.read_csv("datasets/netflix_data.csv")
 # Print the first five rows of the DataFrame
 print(netflix_df[0:5])
 ```
+<img width="281" alt="Screen Shot 2023-04-09 at 20 44 36" src="https://user-images.githubusercontent.com/86967515/230813029-1ed6a839-66e4-4fe3-a20a-a173dfa4cfe2.png">
 
 ## 5. Filtering for movies!
 <p>Okay, we have our data! Now we can dive in and start looking at movie lengths. </p>
@@ -81,6 +85,7 @@ netflix_movies_col_subset = netflix_df_movies_only[['title', 'country', 'genre',
 # Print the first five rows of the new DataFrame
 netflix_movies_col_subset[0:5]
 ```
+<img width="771" alt="Screen Shot 2023-04-09 at 20 45 22" src="https://user-images.githubusercontent.com/86967515/230813038-1a9e8033-a85f-43a7-a958-fc03d196e9df.png">
 
 ## 6. Creating a scatter plot
 <p>Okay, now we're getting somewhere. We've read in the raw data, selected rows of movies, and have limited our DataFrame to our columns of interest. Let's try visualizing the data again to inspect the data over a longer range of time.</p>
@@ -99,6 +104,7 @@ plt.title("Movie Duration by Year of Release")
 # Show the plot
 plt.show()
 ```
+<img width="765" alt="Screen Shot 2023-04-09 at 20 45 51" src="https://user-images.githubusercontent.com/86967515/230813330-238c94de-9463-4c12-a8cd-1d5fb76069cd.png">
 
 ## 7. Digging deeper
 <p>This is already much more informative than the simple plot we created when our friend first gave us some data. We can also see that, while newer movies are overrepresented on the platform, many short movies have been released in the past two decades.</p>
@@ -111,6 +117,7 @@ short_movies = netflix_movies_col_subset[netflix_movies_col_subset['duration'] <
 # Print the first 20 rows of short_movies
 short_movies[0:20]
 ```
+<img width="765" alt="Screen Shot 2023-04-09 at 20 46 19" src="https://user-images.githubusercontent.com/86967515/230813226-fae2aad9-3804-4483-bec4-60535e8f0e89.png">
 
 ## 8. Marking non-feature films
 <p>Interesting! It looks as though many of the films that are under 60 minutes fall into genres such as "Children", "Stand-Up", and "Documentaries". This is a logical result, as these types of films are probably often shorter than 90 minute Hollywood blockbuster. </p>
@@ -135,6 +142,7 @@ for lab, row in netflix_movies_col_subset.iterrows():
 # Inspect the first 10 values in your list        
 colors[0:10]
 ```
+<img width="118" alt="Screen Shot 2023-04-09 at 20 46 49" src="https://user-images.githubusercontent.com/86967515/230813132-4b8366fc-00dd-4a16-b488-a3f3c16b4fe7.png">
 
 ## 9. Plotting with color!
 <p>Lovely looping! We now have a <code>colors</code> list that we can pass to our scatter plot, which should allow us to visually inspect whether these genres might be responsible for the decline in the average duration of movies.</p>
@@ -155,3 +163,4 @@ plt.ylabel("Duration (min)")
 # Show the plot
 plt.show
 ```
+<img width="743" alt="Screen Shot 2023-04-09 at 20 47 42" src="https://user-images.githubusercontent.com/86967515/230813150-81fa78af-7080-4179-bb8a-53dec13892ec.png">
